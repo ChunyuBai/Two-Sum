@@ -36,5 +36,32 @@
 //       }
 //   }
 // };
-// Runtime: 80 ms Test case pass 
+//Runtime: 80 ms Test case pass 
+
+/* Logic: Create a map { } and use map.has()
+  1. loop array and use the target number - each value in array(nums[i])
+  2. if condition check map has the value or not
+  map = {
+    3(value): 0(key)
+    2(value): 1(key)
+    3(value): 2(key)
+  }
+  map.has() check object key instead of check value so we need to reverse the key and value
+  3. if target - nums[i] = map{key} return [map{key},i] or [i, map{key}]
+  4. else we set map new key and value
+*/
+
+/* Solution: */
+var twoSum = function(nums, target) {
+  let map = new Map();
+  for(let i = 0; i < nums.length; i++) {
+    let value = target - nums[i]
+    if(map.has(value)){
+      return [map.get(value),i]
+    } else {
+      map.set(nums[i],i)
+    }
+  }
+};
+//Runtime 66 ms
 
